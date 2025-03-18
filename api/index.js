@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import authRouter from "./route/auth.route.js";
+import blogRouter from "./route/blog.route.js";
+import commentRouter from "./route/comment.route.js";
 
 dotenv.config();
 
@@ -23,6 +25,8 @@ app.listen(4000, () => {
 });
 
 app.use("/api/auth", authRouter);
+app.use("/api/blog", blogRouter);
+app.use("/api/comments", commentRouter);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
